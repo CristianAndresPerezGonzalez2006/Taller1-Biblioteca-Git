@@ -104,3 +104,98 @@ public static void eliminarCliente() {
         System.out.println("No se encontro ningun cliente con ese ID.");
     }
 }
+static ArrayList<Libro> libros = new ArrayList<>();
+public static void crearLibro() {
+    System.out.println("--- Registrar nuevo libro ---");
+    System.out.print("Codigo: ");
+    String codigo = sc.nextLine();
+    System.out.print("Titulo: ");
+    String titulo = sc.nextLine();
+    System.out.print("Anio de publicacion: ");
+    String anioPublicacion = sc.nextLine();
+    System.out.print("Autor: ");
+    String autor = sc.nextLine();
+
+    Libro nuevoLibro = new Libro(codigo, titulo, anioPublicacion, autor);
+    libros.add(nuevoLibro);
+
+    System.out.println("Libro registrado con exito.");
+}
+
+public static void listarLibros() {
+    System.out.println("--- Lista de libros ---");
+    if (libros.isEmpty()) {
+        System.out.println("No hay libros registrados.");
+    } else {
+        for (Libro l : libros) {
+            System.out.println(l);
+        }
+    }
+}
+
+public static void buscarLibro() {
+    System.out.print("Ingrese el codigo del libro a buscar: ");
+    String codigoBuscado = sc.nextLine();
+
+    boolean encontrado = false;
+    for (Libro l : libros) {
+        if (l.getCodigo().equals(codigoBuscado)) {
+            System.out.println("Libro encontrado: " + l);
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        System.out.println("No se encontro ningun libro con ese codigo.");
+    }
+}
+public static void actualizarLibro() {
+    System.out.print("Ingrese el codigo del libro a actualizar: ");
+    String codigoBuscado = sc.nextLine();
+
+    boolean encontrado = false;
+    for (Libro l : libros) {
+        if (l.getCodigo().equals(codigoBuscado)) {
+            System.out.print("Nuevo titulo: ");
+            String titulo = sc.nextLine();
+            System.out.print("Nuevo anio de publicacion: ");
+            String anioPublicacion = sc.nextLine();
+            System.out.print("Nuevo autor: ");
+            String autor = sc.nextLine();
+
+            l.setTitulo(titulo);
+            l.setAnioPublicacion(anioPublicacion);
+            l.setAutor(autor);
+
+            System.out.println("Libro actualizado con exito.");
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        System.out.println("No se encontro ningun libro con ese codigo.");
+    }
+}
+
+public static void eliminarLibro() {
+    System.out.print("Ingrese el codigo del libro a eliminar: ");
+    String codigoBuscado = sc.nextLine();
+
+    Libro libroAEliminar = null;
+    for (Libro l : libros) {
+        if (l.getCodigo().equals(codigoBuscado)) {
+            libroAEliminar = l;
+            break;
+        }
+    }
+
+    if (libroAEliminar != null) {
+        libros.remove(libroAEliminar);
+        System.out.println("Libro eliminado con exito.");
+    } else {
+        System.out.println("No se encontro ningun libro con ese codigo.");
+    }
+}
+
