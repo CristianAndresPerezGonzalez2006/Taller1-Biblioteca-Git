@@ -245,3 +245,27 @@ public static void crearPrestamo() {
 
     System.out.println("Prestamo registrado con exito.");
 }
+
+public static void devolucionPrestamo() {
+    System.out.print("Ingrese el ID del prestamo a devolver: ");
+    String idBuscado = sc.nextLine();
+
+    boolean encontrado = false;
+    for (Prestamo p : prestamos) {
+        if (p.getIdPrestamo().equals(idBuscado)) {
+            if (p.getEstado().equals("devuelto")) {
+                System.out.println("Este prestamo ya fue devuelto anteriormente.");
+            } else {
+                p.setEstado("devuelto");
+                p.getLibro().setDisponible(true);
+                System.out.println("Devolucion registrada con exito.");
+            }
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        System.out.println("No se encontro ningun prestamo con ese ID.");
+    }
+}
