@@ -5,6 +5,7 @@
 package com.mycompany.taller1.biblioteca.git;
 
 import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Taller1BibliotecaGit {
@@ -199,3 +200,48 @@ public static void eliminarLibro() {
     }
 }
 
+static ArrayList<Prestamo> prestamos = new ArrayList<>();
+public static void crearPrestamo() {
+    System.out.println("--- Registrar nuevo prestamo ---");
+    System.out.print("ID del prestamo: ");
+    String idPrestamo = sc.nextLine();
+
+    System.out.print("ID del cliente: ");
+    String idCliente = sc.nextLine();
+    Cliente clienteEncontrado = null;
+    for (Cliente c : clientes) {
+        if (c.getId().equals(idCliente)) {
+            clienteEncontrado = c;
+            break;
+        }
+    }
+
+    System.out.print("Codigo del libro: ");
+    String codigoLibro = sc.nextLine();
+    Libro libroEncontrado = null;
+    for (Libro l : libros) {
+        if (l.getCodigo().equals(codigoLibro)) {
+            libroEncontrado = l;
+            break;
+        }
+    }
+
+    if (clienteEncontrado == null) {
+        System.out.println("No se encontro el cliente con ese ID.");
+        return;
+    }
+    if (libroEncontrado == null) {
+        System.out.println("No se encontro el libro con ese codigo.");
+        return;
+    }
+    if (!libroEncontrado.isDisponible()) {
+        System.out.println("El libro no esta disponible actualmente.");
+        return;
+    }
+
+    Prestamo nuevoPrestamo = new Prestamo(idPrestamo, clienteEncontrado, libroEncontrado, LocalDate.now(), "activo");
+    prestamos.add(nuevoPrestamo);
+    libroEncontrado.setDisponible(false);
+
+    System.out.println("Prestamo registrado con exito.");
+}
