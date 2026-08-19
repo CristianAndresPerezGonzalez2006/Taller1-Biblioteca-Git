@@ -28,4 +28,14 @@ public class Taller1BibliotecaGit {
     System.out.println("Cliente registrado con exito.");
 }
     }
+public static void listarClientes() {
+    System.out.println("--- Lista de clientes ---");
+    if (clientes.isEmpty()) {
+        System.out.println("No hay clientes registrados.");
+    } else {
+        for (Cliente c : clientes) {
+            System.out.println(c);
+        }
+    }
+}
 
