@@ -132,3 +132,22 @@ public static void listarLibros() {
         }
     }
 }
+
+public static void buscarLibro() {
+    System.out.print("Ingrese el codigo del libro a buscar: ");
+    String codigoBuscado = sc.nextLine();
+
+    boolean encontrado = false;
+    for (Libro l : libros) {
+        if (l.getCodigo().equals(codigoBuscado)) {
+            System.out.println("Libro encontrado: " + l);
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        System.out.println("No se encontro ningun libro con ese codigo.");
+    }
+}
+
