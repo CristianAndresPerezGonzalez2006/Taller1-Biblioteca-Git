@@ -85,3 +85,22 @@ public static void actualizarCliente() {
     }
 }
 
+public static void eliminarCliente() {
+    System.out.print("Ingrese el ID del cliente a eliminar: ");
+    String idBuscado = sc.nextLine();
+
+    Cliente clienteAEliminar = null;
+    for (Cliente c : clientes) {
+        if (c.getId().equals(idBuscado)) {
+            clienteAEliminar = c;
+            break;
+        }
+    }
+
+    if (clienteAEliminar != null) {
+        clientes.remove(clienteAEliminar);
+        System.out.println("Cliente eliminado con exito.");
+    } else {
+        System.out.println("No se encontro ningun cliente con ese ID.");
+    }
+}
