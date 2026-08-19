@@ -38,4 +38,21 @@ public static void listarClientes() {
         }
     }
 }
+public static void buscarCliente() {
+    System.out.print("Ingrese el ID del cliente a buscar: ");
+    String idBuscado = sc.nextLine();
+
+    boolean encontrado = false;
+    for (Cliente c : clientes) {
+        if (c.getId().equals(idBuscado)) {
+            System.out.println("Cliente encontrado: " + c);
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        System.out.println("No se encontro ningun cliente con ese ID.");
+    }
+}
 
