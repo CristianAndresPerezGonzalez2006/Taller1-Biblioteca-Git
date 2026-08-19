@@ -269,3 +269,18 @@ public static void devolucionPrestamo() {
         System.out.println("No se encontro ningun prestamo con ese ID.");
     }
 }
+
+public static void listarPrestamos() {
+    System.out.println("--- Lista de prestamos activos ---");
+    boolean hayActivos = false;
+    for (Prestamo p : prestamos) {
+        if (p.getEstado().equals("activo")) {
+            System.out.println(p);
+            hayActivos = true;
+        }
+    }
+    if (!hayActivos) {
+        System.out.println("No hay prestamos activos.");
+    }
+}
+
