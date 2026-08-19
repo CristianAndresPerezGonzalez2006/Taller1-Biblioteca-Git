@@ -179,4 +179,23 @@ public static void actualizarLibro() {
     }
 }
 
+public static void eliminarLibro() {
+    System.out.print("Ingrese el codigo del libro a eliminar: ");
+    String codigoBuscado = sc.nextLine();
+
+    Libro libroAEliminar = null;
+    for (Libro l : libros) {
+        if (l.getCodigo().equals(codigoBuscado)) {
+            libroAEliminar = l;
+            break;
+        }
+    }
+
+    if (libroAEliminar != null) {
+        libros.remove(libroAEliminar);
+        System.out.println("Libro eliminado con exito.");
+    } else {
+        System.out.println("No se encontro ningun libro con ese codigo.");
+    }
+}
 
