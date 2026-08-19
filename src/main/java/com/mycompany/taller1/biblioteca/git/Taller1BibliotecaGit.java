@@ -28,7 +28,7 @@ public class Taller1BibliotecaGit {
 
     System.out.println("Cliente registrado con exito.");
 }
-    }
+    
 public static void listarClientes() {
     System.out.println("--- Lista de clientes ---");
     if (clientes.isEmpty()) {
@@ -281,6 +281,52 @@ public static void listarPrestamos() {
     }
     if (!hayActivos) {
         System.out.println("No hay prestamos activos.");
+    }
+}
+
+public static void main(String[] args) {
+    int opcion;
+    do {
+        System.out.println("\n===== SISTEMA DE GESTION DE BIBLIOTECA =====");
+        System.out.println("--- CLIENTES ---");
+        System.out.println("1. Crear cliente");
+        System.out.println("2. Listar clientes");
+        System.out.println("3. Buscar cliente");
+        System.out.println("4. Actualizar cliente");
+        System.out.println("5. Eliminar cliente");
+        System.out.println("--- LIBROS ---");
+        System.out.println("6. Crear libro");
+        System.out.println("7. Listar libros");
+        System.out.println("8. Buscar libro");
+        System.out.println("9. Actualizar libro");
+        System.out.println("10. Eliminar libro");
+        System.out.println("--- PRESTAMOS ---");
+        System.out.println("11. Registrar prestamo");
+        System.out.println("12. Registrar devolucion");
+        System.out.println("13. Listar prestamos activos");
+        System.out.println("0. Salir");
+        System.out.print("Seleccione una opcion: ");
+
+        opcion = Integer.parseInt(sc.nextLine());
+
+        switch (opcion) {
+            case 1 -> crearCliente();
+            case 2 -> listarClientes();
+            case 3 -> buscarCliente();
+            case 4 -> actualizarCliente();
+            case 5 -> eliminarCliente();
+            case 6 -> crearLibro();
+            case 7 -> listarLibros();
+            case 8 -> buscarLibro();
+            case 9 -> actualizarLibro();
+            case 10 -> eliminarLibro();
+            case 11 -> crearPrestamo();
+            case 12 -> devolucionPrestamo();
+            case 13 -> listarPrestamos();
+            case 0 -> System.out.println("Saliendo del sistema...");
+            default -> System.out.println("Opcion invalida, intente de nuevo.");
+        }
+    } while (opcion != 0);
     }
 }
 
