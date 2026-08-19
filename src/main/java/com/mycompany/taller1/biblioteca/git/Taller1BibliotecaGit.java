@@ -122,3 +122,13 @@ public static void crearLibro() {
     System.out.println("Libro registrado con exito.");
 }
 
+public static void listarLibros() {
+    System.out.println("--- Lista de libros ---");
+    if (libros.isEmpty()) {
+        System.out.println("No hay libros registrados.");
+    } else {
+        for (Libro l : libros) {
+            System.out.println(l);
+        }
+    }
+}
