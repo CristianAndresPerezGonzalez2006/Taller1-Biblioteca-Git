@@ -104,3 +104,21 @@ public static void eliminarCliente() {
         System.out.println("No se encontro ningun cliente con ese ID.");
     }
 }
+static ArrayList<Libro> libros = new ArrayList<>();
+public static void crearLibro() {
+    System.out.println("--- Registrar nuevo libro ---");
+    System.out.print("Codigo: ");
+    String codigo = sc.nextLine();
+    System.out.print("Titulo: ");
+    String titulo = sc.nextLine();
+    System.out.print("Anio de publicacion: ");
+    String anioPublicacion = sc.nextLine();
+    System.out.print("Autor: ");
+    String autor = sc.nextLine();
+
+    Libro nuevoLibro = new Libro(codigo, titulo, anioPublicacion, autor);
+    libros.add(nuevoLibro);
+
+    System.out.println("Libro registrado con exito.");
+}
+
