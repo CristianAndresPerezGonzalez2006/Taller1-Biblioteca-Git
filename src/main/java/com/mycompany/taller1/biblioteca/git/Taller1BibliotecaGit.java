@@ -150,4 +150,33 @@ public static void buscarLibro() {
         System.out.println("No se encontro ningun libro con ese codigo.");
     }
 }
+public static void actualizarLibro() {
+    System.out.print("Ingrese el codigo del libro a actualizar: ");
+    String codigoBuscado = sc.nextLine();
+
+    boolean encontrado = false;
+    for (Libro l : libros) {
+        if (l.getCodigo().equals(codigoBuscado)) {
+            System.out.print("Nuevo titulo: ");
+            String titulo = sc.nextLine();
+            System.out.print("Nuevo anio de publicacion: ");
+            String anioPublicacion = sc.nextLine();
+            System.out.print("Nuevo autor: ");
+            String autor = sc.nextLine();
+
+            l.setTitulo(titulo);
+            l.setAnioPublicacion(anioPublicacion);
+            l.setAutor(autor);
+
+            System.out.println("Libro actualizado con exito.");
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        System.out.println("No se encontro ningun libro con ese codigo.");
+    }
+}
+
 
